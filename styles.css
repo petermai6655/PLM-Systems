@@ -1,0 +1,310 @@
+/* =========================================
+   1. VARIABLES & RESET
+   ========================================= */
+:root {
+    --bg-color: #0f0f0f;
+    --text-primary: #ffffff;
+    --text-secondary: #dcdcdc; /* Warmer grey */
+    --text-muted: #888888;
+    --accent-color: #b8956a; /* Bronze/Gold */
+    --font-main: 'Inter', sans-serif;
+    --font-serif: 'Lora', serif;
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box;
+    /* REMOVED font-smoothing to restore bolder text weight */
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-main);
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* =========================================
+   2. HERO IMAGE BACKGROUND
+   ========================================= */
+.hero-background {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    /* CSS Fallback Color included */
+    background: url('images/background.jpg') no-repeat center center/cover, #0f0f0f;
+    z-index: -2;
+}
+
+.hero-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(10, 10, 10, 0.85); 
+    z-index: -1;
+}
+
+/* =========================================
+   3. LAYOUT
+   ========================================= */
+.main-container {
+    max-width: 700px;
+    width: 90%;
+    text-align: center;
+    padding: 4rem 0;
+    z-index: 1;
+}
+
+/* =========================================
+   4. TYPOGRAPHY & SECTIONS
+   ========================================= */
+.brand-subtitle {
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.company-name {
+    font-family: var(--font-serif);
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 400;
+    margin-bottom: 2rem;
+    color: #fff;
+    letter-spacing: -0.02em;
+}
+
+.divider-line {
+    width: 80px;
+    height: 1px;
+    background-color: var(--accent-color);
+    opacity: 0.6;
+    margin: 0 auto 4rem auto;
+}
+
+.about-section { margin-bottom: 5rem; }
+
+.lead-text {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    font-weight: 400;
+    font-style: italic;
+    color: #f0f0f0;
+    margin-bottom: 1.5rem;
+}
+
+.sub-text {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    max-width: 520px;
+    margin: 0 auto;
+    font-weight: 300;
+}
+
+/* =========================================
+   5. CONTACT CARD
+   ========================================= */
+.details-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 3rem;
+    text-align: left;
+}
+
+.detail-card { padding: 0 1rem; }
+.detail-card:last-child { border-left: 1px solid rgba(255, 255, 255, 0.1); }
+
+.label {
+    display: block;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+address {
+    font-style: normal;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+.contact-row {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.6rem;
+}
+
+.contact-row a {
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 2px;
+    transition: all 0.2s;
+}
+
+.contact-row a:hover { 
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+/* =========================================
+   6. FOOTER
+   ========================================= */
+footer {
+    position: absolute;
+    bottom: 2rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    width: 100%;
+    text-align: center;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    align-items: center;
+}
+
+.footer-links a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+}
+
+.separator { opacity: 0.3; }
+
+/* =========================================
+   7. ANIMATIONS & ACCESSIBILITY
+   ========================================= */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.3s; }
+.delay-3 { animation-delay: 0.5s; }
+
+@keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .fade-in-up { 
+        animation: none; 
+        opacity: 1; 
+        transform: none; 
+    }
+}
+
+/* =========================================
+   8. RESPONSIVE
+   ========================================= */
+@media (max-width: 600px) {
+    .details-section {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 3rem;
+    }
+    
+    .detail-card:last-child {
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 3rem;
+    }
+
+    footer {
+        position: relative;
+        margin-top: 5rem;
+        bottom: auto;
+    }
+}
+
+/* =========================================
+   9. LEGAL PAGES STYLING
+   ========================================= */
+.legal-container {
+    max-width: 650px;
+    width: 90%;
+    padding: 4rem 0 6rem 0;
+    text-align: left;
+    z-index: 1;
+}
+
+.legal-header-line {
+    width: 100%;
+    height: 1px;
+    background-color: var(--accent-color);
+    opacity: 0.4;
+    margin: 2rem 0 3rem 0;
+}
+
+.legal-meta {
+    text-align: right;
+    color: var(--accent-color);
+    font-weight: 500;
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+    font-size: 0.9rem;
+}
+
+.legal-section-title {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-color);
+    margin: 2.5rem 0 1rem 0;
+    font-weight: 600;
+}
+
+/* UPDATED: Brighter color for readability */
+.legal-text {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: #f0f0f0; /* Brightened from #dcdcdc */
+    margin-bottom: 1.5rem;
+}
+
+.legal-text a {
+    color: #fff;
+    text-decoration: underline;
+    transition: color 0.2s;
+}
+
+.legal-text a:hover {
+    color: var(--accent-color);
+}
+
+.return-container {
+    margin-top: 4rem;
+}
+
+.return-link {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+}
+
+.return-link:hover {
+    color: #ffffff;
+}
