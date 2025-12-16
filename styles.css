@@ -15,11 +15,17 @@
     margin: 0; 
     padding: 0; 
     box-sizing: border-box;
-    /* Font smoothing removed for bolder text */
+}
+
+html {
+    scroll-behavior: smooth;
+    /* Keeps the overscroll void dark */
+    background-color: var(--bg-color);
 }
 
 body {
-    background-color: var(--bg-color);
+    /* FIX: Must be transparent so the negative z-index image shows through */
+    background-color: transparent;
     color: var(--text-primary);
     font-family: var(--font-main);
     min-height: 100vh;
@@ -37,9 +43,19 @@ body {
 .hero-background {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    /* CSS Fallback Color included */
-    background: url('images/background.jpg') no-repeat center center/cover, #0f0f0f;
+    
+    /* FIX: Split properties for safety */
+    background-image: url('images/background.jpg');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #0f0f0f; /* Fallback */
+    
     z-index: -2;
+    
+    /* GPU acceleration for smooth scroll */
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 .hero-overlay {
@@ -231,7 +247,6 @@ footer {
         padding-top: 3rem;
     }
 
-    /* FIX: Added padding-bottom to clear mobile home bars */
     footer {
         position: relative;
         margin-top: 5rem;
@@ -278,7 +293,6 @@ footer {
     font-weight: 600;
 }
 
-/* Brighter text for readability */
 .legal-text {
     font-size: 0.95rem;
     line-height: 1.8;
