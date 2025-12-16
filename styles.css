@@ -15,7 +15,7 @@
     margin: 0; 
     padding: 0; 
     box-sizing: border-box;
-    /* REMOVED font-smoothing to restore bolder text weight */
+    /* Font smoothing removed for bolder text */
 }
 
 body {
@@ -231,10 +231,13 @@ footer {
         padding-top: 3rem;
     }
 
+    /* FIX: Added padding-bottom to clear mobile home bars */
     footer {
         position: relative;
         margin-top: 5rem;
         bottom: auto;
+        padding-bottom: 2rem;
+        margin-bottom: 1rem;
     }
 }
 
@@ -275,11 +278,11 @@ footer {
     font-weight: 600;
 }
 
-/* UPDATED: Brighter color for readability */
+/* Brighter text for readability */
 .legal-text {
     font-size: 0.95rem;
     line-height: 1.8;
-    color: #f0f0f0; /* Brightened from #dcdcdc */
+    color: #f0f0f0; 
     margin-bottom: 1.5rem;
 }
 
